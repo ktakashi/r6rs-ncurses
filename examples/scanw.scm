@@ -13,7 +13,7 @@
   (ncurses:mvprintw (div row 2) (div (- col (string-length mesg)) 2) "%s" mesg)
   (let ((str (make-bytevector 80 0)))
     (ncurses:getstr str)
-    (ncurses:mvprintw (- *ncurses:lines* 2) 0 "You Entered: %s"
+    (ncurses:mvprintw (- *ncurses:LINES* 2) 0 "You Entered: %s"
 		      (utf8->string str))))
 
 (ncurses:getch)

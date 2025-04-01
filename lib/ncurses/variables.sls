@@ -33,12 +33,12 @@
 	    *ncurses:newscr*
 	    *ncurses:stdscr*
 	    *ncurses:ttytype*
-	    (rename (*ncurses:COLORS* *ncurses:colors*)
-		    (*ncurses:COLOR_PAIRS* *ncurses:color-pairs*)
-		    (*ncurses:COLS* *ncurses:cols*)
-		    (*ncurses:ESCDELAY* *ncurses:escdelay*)
-		    (*ncurses:LINES* *ncurses:lines*)
-		    (*ncurses:TABSIZE* *ncurses:tabsize*)))
+	    *ncurses:COLORS*
+	    *ncurses:COLOR_PAIRS*
+	    *ncurses:COLS*
+	    *ncurses:ESCDELAY*
+	    *ncurses:LINES*
+	    *ncurses:TABSIZE*)
     (import (rnrs)
 	    (pffi)
 	    (ncurses runtime)

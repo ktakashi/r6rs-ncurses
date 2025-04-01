@@ -13,13 +13,13 @@
   
   (ncurses:printw "Type any character to see it in bold\n")
   (let ((ch (ncurses:getch)))
-    (if (eqv? ch (ncurses:key-f 1))
+    (if (eqv? ch (ncurses:KEY_F 1))
 	(ncurses:printw "F1 Key pressed")
 	(begin
 	  (ncurses:printw "The pressed key is ")
-	  (ncurses:attron *ncurses:a-bold*)
+	  (ncurses:attron *ncurses:A_BOLD*)
 	  (ncurses:printw "%c" ch)
-	  (ncurses:attroff *ncurses:a-bold*)))))
+	  (ncurses:attroff *ncurses:A_BOLD*)))))
 (ncurses:refresh)
 (ncurses:getch)
 (ncurses:endwin)
