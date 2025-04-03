@@ -51,6 +51,15 @@
 	    *ncurses:A_VERTICAL*
 	    *ncurses:A_ITALIC*
 
+	    *ncurses:COLOR_BLACK*
+	    *ncurses:COLOR_RED*
+	    *ncurses:COLOR_GREEN*
+	    *ncurses:COLOR_YELLOW*
+	    *ncurses:COLOR_BLUE*
+	    *ncurses:COLOR_MAGENTA*
+	    *ncurses:COLOR_CYAN*
+	    *ncurses:COLOR_WHITE*
+
 	    ncurses:KEY_F
 
 	    *ncurses:KEY_CODE_YES*
@@ -176,6 +185,16 @@
 (define *ncurses:A_TOP*		(ncurses-bits 1 21))
 (define *ncurses:A_VERTICAL*	(ncurses-bits 1 22))
 (define *ncurses:A_ITALIC*	(ncurses-bits 1 23))
+
+;; colors
+(define *ncurses:COLOR_BLACK*	0)
+(define *ncurses:COLOR_RED*	1)
+(define *ncurses:COLOR_GREEN*	2)
+(define *ncurses:COLOR_YELLOW*	3)
+(define *ncurses:COLOR_BLUE*	4)
+(define *ncurses:COLOR_MAGENTA*	5)
+(define *ncurses:COLOR_CYAN*	6)
+(define *ncurses:COLOR_WHITE*	7)
 
 (define (key-f n) (+ *ncurses:KEY_F0* n))
 (define-syntax ncurses:KEY_F ;; Value of function key n

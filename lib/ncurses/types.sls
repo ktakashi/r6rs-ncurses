@@ -32,7 +32,14 @@
     (export bool char* short* int* void* va_list
 	    chtype chtype*
 	    mmask_t attr_t attr_t*
-	    WINDOW* SCREEN* FILE*)
+	    WINDOW* SCREEN* FILE*
+
+	    ;; (rename (%mevent MEVENT))
+	    ;; MEVENT-id MEVENT-x MEVENT-y MEVENT-z MEVENT-bstate
+	    ;; ;; I don't think we need this but for testing purpose
+	    ;; MEVENT-id-set! MEVENT-x-set! MEVENT-y-set! MEVENT-z-set!
+	    ;; MEVENT-bstate-set!
+	    )
     (import (rnrs)
 	    (pffi))
 (define-type-alias bool unsigned-char)
@@ -51,4 +58,14 @@
 (define-type-alias WINDOW* pointer)
 (define-type-alias SCREEN* pointer)
 (define-type-alias FILE* pointer)
+
+;; (define-foreign-struct MEVENT
+;;   (fields (short id)
+;; 	  (int x)
+;; 	  (int y)
+;; 	  (int z)
+;; 	  (mmask_t bstate)))
+
+;; (define (%mevent) (make-bytevector size-of-MEVENT 0))
+
 )

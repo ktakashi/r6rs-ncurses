@@ -187,6 +187,16 @@
 	    *ncurses:A_VERTICAL*
 	    *ncurses:A_ITALIC*
 
+	    ;; colors
+	    *ncurses:COLOR_BLACK*
+	    *ncurses:COLOR_RED*
+	    *ncurses:COLOR_GREEN*
+	    *ncurses:COLOR_YELLOW*
+	    *ncurses:COLOR_BLUE*
+	    *ncurses:COLOR_MAGENTA*
+	    *ncurses:COLOR_CYAN*
+	    *ncurses:COLOR_WHITE*
+	    
 	    ;; keys
 	    ncurses:KEY_F
 	    *ncurses:KEY_CODE_YES*
