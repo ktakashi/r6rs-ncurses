@@ -1,6 +1,6 @@
 ;;; -*- mode:scheme; coding: utf-8; -*-
 ;;;
-;;; ncurses/types.sls
+;;; ncurses/mouse/types.sls - ncurses mouse types
 ;;;
 ;;;   Copyright (c) 2025  Takashi Kato  <ktakashi@ymail.com>
 ;;;
@@ -27,31 +27,31 @@
 ;;;   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#!r6rs
-(library (ncurses types)
-    (export bool char* short* int* void* va_list
-	    chtype chtype*
-	    mmask_t mmask_t* attr_t attr_t*
-	    WINDOW* SCREEN* FILE*
-	    )
+(library (ncurses mouse types)
+    (export MEVENT MEVENT*
+	    (rename (make-MEVENT ncurses:make-MEVENT)
+		    (MEVENT? ncurses:MEVENT?)
+		    (MEVENT-id ncurses:MEVENT-id)
+		    (MEVENT-x  ncurses:MEVENT-x)
+		    (MEVENT-y  ncurses:MEVENT-y)
+		    (MEVENT-z  ncurses:MEVENT-z)
+		    (MEVENT-bstate ncurses:MEVENT-bstate))
+
+	    ;; I don't think we need this but for testing purpose
+	    MEVENT-id-set! MEVENT-x-set! MEVENT-y-set! MEVENT-z-set!
+	    MEVENT-bstate-set!)
     (import (rnrs)
-	    (pffi))
-(define-type-alias bool unsigned-char)
-(define-type-alias char* pointer)
-(define-type-alias short* pointer)
-(define-type-alias int* pointer)
-(define-type-alias void* pointer)
-(define-type-alias va_list char*) ;; probably wrong
+	    (pffi)
+	    (ncurses types))
 
-(define-type-alias chtype uint32_t)
-(define-type-alias chtype* pointer)
-(define-type-alias mmask_t uint32_t)
-(define-type-alias mmask_t* pointer)
-(define-type-alias attr_t chtype)
-(define-type-alias attr_t* pointer)
-
-(define-type-alias WINDOW* pointer)
-(define-type-alias SCREEN* pointer)
-(define-type-alias FILE* pointer)
-
+(define-foreign-struct MEVENT
+  (fields (short id)
+	  (int x)
+	  (int y)
+	  (int z)
+	  (mmask_t bstate))
+  (protocol (lambda (p)
+	      (lambda ()
+		(p 0 0 0 0 0)))))
+(define-type-alias MEVENT* pointer)
 )

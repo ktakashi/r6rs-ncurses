@@ -170,6 +170,9 @@
 	    *ncurses:A_CHARTEXT*
 	    *ncurses:A_COLOR*
 
+	    *ncurses:OK* 
+	    *ncurses:ERR*
+
 	    *ncurses:A_STANDOUT*
 	    *ncurses:A_UNDERLINE*
 	    *ncurses:A_REVERSE*
@@ -290,7 +293,6 @@
 	    *ncurses:KEY_SUNDO*
 	    *ncurses:KEY_SUSPEND*
 	    *ncurses:KEY_UNDO*
-	    *ncurses:KEY_MOUSE*
 	    *ncurses:KEY_RESIZE*
 	    *ncurses:KEY_MAX*)
     (import (only (ncurses runtime) init-ncurses-binding)

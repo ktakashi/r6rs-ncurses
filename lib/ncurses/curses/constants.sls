@@ -27,16 +27,18 @@
 ;;;   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-;; we should move *ncurses:A_ITALIC*, *ncurses:KEY_MOUSE* and
-;; *ncurses:KEY_RESIZE* to other library though I'm too lazy to do
-;; it. I'll do it if I figure out that the non-curses constants are
-;; more than the above.
+;; we should move *ncurses:A_ITALIC* and *ncurses:KEY_RESIZE* to other
+;; library though I'm too lazy to do it. I'll do it if I figure out
+;; that the non-curses constants are more than the above.
 #!r6rs
 (library (ncurses curses constants)
     (export *ncurses:A_NORMAL*
 	    *ncurses:A_ATTRIBUTES*
 	    *ncurses:A_CHARTEXT*
 	    *ncurses:A_COLOR*
+
+	    *ncurses:OK* 
+	    *ncurses:ERR*
 
 	    *ncurses:A_STANDOUT*
 	    *ncurses:A_UNDERLINE*
@@ -157,7 +159,6 @@
 	    *ncurses:KEY_SUNDO*
 	    *ncurses:KEY_SUSPEND*
 	    *ncurses:KEY_UNDO*
-	    *ncurses:KEY_MOUSE*
 	    *ncurses:KEY_RESIZE*
 	    *ncurses:KEY_MAX*)
     (import (rnrs))
@@ -199,6 +200,9 @@
 (define *ncurses:COLOR_MAGENTA*	5)
 (define *ncurses:COLOR_CYAN*	6)
 (define *ncurses:COLOR_WHITE*	7)
+
+(define *ncurses:OK*   0)
+(define *ncurses:ERR* -1)
 
 (define (key-f n) (+ *ncurses:KEY_F0* n))
 (define-syntax ncurses:KEY_F ;; Value of function key n
@@ -300,7 +304,6 @@
 (define *ncurses:KEY_SUNDO*	#o626) ;; shifted undo key
 (define *ncurses:KEY_SUSPEND*	#o627) ;; suspend key
 (define *ncurses:KEY_UNDO*	#o630) ;; undo key
-(define *ncurses:KEY_MOUSE*	#o631) ;; Mouse event has occurred
 (define *ncurses:KEY_RESIZE*	#o632) ;; Terminal resize event
 (define *ncurses:KEY_MAX*	#o777) ;; Maximum key value is 0632
 
