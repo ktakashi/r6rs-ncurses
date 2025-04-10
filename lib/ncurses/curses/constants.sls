@@ -1,6 +1,6 @@
 ;;; -*- mode:scheme; coding: utf-8; -*-
 ;;;
-;;; ncurses/constatns.sls
+;;; ncurses/curses/constatns.sls - Constants variables of curses
 ;;;
 ;;;   Copyright (c) 2025  Takashi Kato  <ktakashi@ymail.com>
 ;;;
@@ -27,8 +27,12 @@
 ;;;   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+;; we should move *ncurses:A_ITALIC*, *ncurses:KEY_MOUSE* and
+;; *ncurses:KEY_RESIZE* to other library though I'm too lazy to do
+;; it. I'll do it if I figure out that the non-curses constants are
+;; more than the above.
 #!r6rs
-(library (ncurses constants)
+(library (ncurses curses constants)
     (export *ncurses:A_NORMAL*
 	    *ncurses:A_ATTRIBUTES*
 	    *ncurses:A_CHARTEXT*

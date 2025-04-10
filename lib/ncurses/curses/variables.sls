@@ -1,6 +1,6 @@
 ;;; -*- mode:scheme; coding: utf-8; -*-
 ;;;
-;;; ncurses/variables.sls
+;;; ncurses/curses/variables.sls - variables in curses.h
 ;;;
 ;;;   Copyright (c) 2025  Takashi Kato  <ktakashi@ymail.com>
 ;;;
@@ -28,7 +28,7 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #!r6rs
-(library (ncurses variables)
+(library (ncurses curses variables)
     (export *ncurses:curscr*
 	    *ncurses:newscr*
 	    *ncurses:stdscr*

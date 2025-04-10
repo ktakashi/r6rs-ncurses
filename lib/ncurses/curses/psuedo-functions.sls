@@ -1,6 +1,6 @@
 ;;; -*- mode:scheme; coding: utf-8; -*-
 ;;;
-;;; ncurses/bindings.sls
+;;; ncurses/curses/psuedo-functions.sls - Macros in curses.h
 ;;;
 ;;;   Copyright (c) 2025  Takashi Kato  <ktakashi@ymail.com>
 ;;;
@@ -28,7 +28,7 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #!r6rs
-(library (ncurses psuedo-functions)
+(library (ncurses curses psuedo-functions)
     (export ncurses:addch ncurses:addchnstr ncurses:addchstr ncurses:addnstr
 	    ncurses:addstr
 	    ncurses:attroff ncurses:attron ncurses:attrset
@@ -61,8 +61,8 @@
 
 	    ncurses:getyx ncurses:getbegyx ncurses:getmaxyx ncurses:getparyx)
     (import (rnrs)
-	    (ncurses bindings)
-	    (ncurses variables))
+	    (ncurses curses functions)
+	    (ncurses curses variables))
 
 (define (ncurses:addch ch) (ncurses:waddch *ncurses:stdscr* ch))
 (define (ncurses:addchnstr str n) (ncurses:waddchnstr *ncurses:stdscr* str n))

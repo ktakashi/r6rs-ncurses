@@ -1,6 +1,6 @@
 ;;; -*- mode:scheme; coding: utf-8; -*-
 ;;;
-;;; ncurses/bindings.sls
+;;; ncurses/curses.sls - range of curses.h
 ;;;
 ;;;   Copyright (c) 2025  Takashi Kato  <ktakashi@ymail.com>
 ;;;
@@ -28,42 +28,31 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #!r6rs
-(library (ncurses)
-    (export init-ncurses-binding
-	    ncurses:addch ncurses:addchnstr ncurses:addchstr ncurses:addnstr
-	    ncurses:addstr
-	    ncurses:attroff ncurses:attron ncurses:attrset
-	    ncurses:attr_get ncurses:attr_off ncurses:attr_on ncurses:attr_set
-
-	    ncurses:baudrate ncurses:beep  ncurses:bkgd ncurses:bkgdset
+(library (ncurses curses)
+    (export ncurses:baudrate ncurses:beep 
 	    ncurses:border ncurses:box
 
-	    ncurses:can_change_color ncurses:cbreak ncurses:chgat
-	    ncurses:clear ncurses:clearok
-	    ncurses:clrtobot ncurses:clrtoeol
-	    ncurses:color_content ncurses:color_set
+	    ncurses:can_change_color ncurses:cbreak
+	    ncurses:clearok ncurses:color_content 
 	    ncurses:COLOR_PAIR ncurses:copywin
 	    ncurses:curs_set
 
 	    ncurses:def_prog_mode ncurses:def_shell_mode
-	    ncurses:delay_output ncurses:delch ncurses:delscreen ncurses:delwin
-	    ncurses:deleteln ncurses:derwin ncurses:doupdate ncurses:dupwin
+	    ncurses:delay_output ncurses:delscreen ncurses:delwin
+	    ncurses:derwin ncurses:doupdate ncurses:dupwin
 
-	    ncurses:echo ncurses:echochar ncurses:erase ncurses:endwin
-	    ncurses:erasechar
+	    ncurses:echo ncurses:endwin ncurses:erasechar
 
 	    ncurses:filter ncurses:flash ncurses:flushinp
 
-	    ncurses:getbkgd ncurses:getch ncurses:getnstr ncurses:getstr
-	    ncurses:getwin
+	    ncurses:getbkgd ncurses:getnstr ncurses:getwin
 
 	    ncurses:halfdelay ncurses:has_colors ncurses:has_ic ncurses:has_il
 	    ncurses:hline
 
-	    ncurses:idcok ncurses:idlok ncurses:immedok ncurses:inch
-	    ncurses:inchnstr ncurses:inchstr ncurses:initscr ncurses:init_color
-	    ncurses:init_pair ncurses:innstr ncurses:insch ncurses:insdelln
-	    ncurses:insertln ncurses:insnstr ncurses:insstr ncurses:instr
+	    ncurses:idcok ncurses:idlok ncurses:immedok ncurses:initscr
+	    ncurses:init_color ncurses:init_pair 
+	    
 	    ncurses:intrflush ncurses:isendwin
 	    ncurses:is_linetouched ncurses:is_wintouched
 
@@ -71,7 +60,7 @@
 
 	    ncurses:leaveok ncurses:longname
 
-	    ncurses:meta ncurses:move ncurses:mvaddch
+	    ncurses:meta  ncurses:mvaddch
 	    ncurses:mvaddchnstr ncurses:mvaddchstr ncurses:mvaddnstr
 	    ncurses:mvaddstr ncurses:mvchgat ncurses:mvcur ncurses:mvdelch
 	    ncurses:mvderwin ncurses:mvgetch ncurses:mvgetnstr
@@ -101,25 +90,25 @@
 
 	    ncurses:qiflush
 
-	    ncurses:raw ncurses:redrawwin ncurses:refresh
+	    ncurses:raw ncurses:redrawwin 
 	    ncurses:resetty ncurses:reset_prog_mode
 	    ncurses:reset_shell_mode ncurses:ripoffline
 
 	    ncurses:savetty ncurses:scanw ncurses:scr_dump
-	    ncurses:scr_init ncurses:scrl ncurses:scroll
+	    ncurses:scr_init ncurses:scroll
 	    ncurses:scrollok ncurses:scr_restore
-	    ncurses:scr_set ncurses:setscrreg ncurses:set_term
+	    ncurses:scr_set  ncurses:set_term
 	    ncurses:slk_attroff ncurses:slk_attr_off ncurses:slk_attron
 	    ncurses:slk_attr_on ncurses:slk_attrset ncurses:slk_attr
 	    ncurses:slk_attr_set ncurses:slk_clear ncurses:slk_color
 	    ncurses:slk_init ncurses:slk_label ncurses:slk_noutrefresh
 	    ncurses:slk_refresh ncurses:slk_restore ncurses:slk_set
 	    ncurses:slk_touch
-	    ncurses:standout ncurses:standend ncurses:start_color
-	    ncurses:subpad ncurses:subwin ncurses:syncok
+	    ncurses:start_color ncurses:subpad ncurses:subwin ncurses:syncok
 
-	    ncurses:termattrs ncurses:termname ncurses:timeout
+	    ncurses:termattrs ncurses:termname 
 	    ncurses:touchline ncurses:touchwin ncurses:typeahead
+
 	    ncurses:ungetch ncurses:untouchwin ncurses:use_env
 	    ncurses:use_tioctl
 
@@ -135,12 +124,12 @@
 	    ncurses:wchgat ncurses:wclear
 	    ncurses:wclrtobot ncurses:wclrtoeol
 	    ncurses:wcolor_set ncurses:wcursyncup
-	    ncurses:wdelch ncurses:wdeleteln
+	    ncurses:wdelch 
 	    ncurses:wechochar ncurses:werase
 	    ncurses:wgetch ncurses:wgetnstr ncurses:wgetstr ncurses:whline
 	    ncurses:winch ncurses:winchnstr ncurses:winchstr
 	    ncurses:winnstr ncurses:winsch ncurses:winsdelln
-	    ncurses:winsertln ncurses:winsnstr ncurses:winsstr ncurses:winstr
+	    ncurses:winsnstr ncurses:winsstr ncurses:winstr
 	    ncurses:wmove ncurses:wnoutrefresh ncurses:wprintw
 	    ncurses:wredrawln ncurses:wrefresh ncurses:wscanw ncurses:wscrl
 	    ncurses:wsetscrreg ncurses:wstandout ncurses:wstandend
@@ -157,14 +146,43 @@
 	    ncurses:getbegx ncurses:getbegy ncurses:getmaxx
 	    ncurses:getmaxy ncurses:getparx ncurses:getpary
 
-	    ncurses:getyx ncurses:getbegyx ncurses:getmaxyx ncurses:getparyx
 	    
-	    ;; variables
 	    *ncurses:curscr* *ncurses:newscr* *ncurses:stdscr* *ncurses:ttytype*
 	    *ncurses:COLORS* *ncurses:COLOR_PAIRS* *ncurses:COLS*
 	    *ncurses:ESCDELAY* *ncurses:LINES* *ncurses:TABSIZE*
-	    
-	    ;; attributes
+
+	    ncurses:addch ncurses:addchnstr ncurses:addchstr ncurses:addnstr
+	    ncurses:addstr
+	    ncurses:attroff ncurses:attron ncurses:attrset
+	    ncurses:attr_get ncurses:attr_off ncurses:attr_on ncurses:attr_set
+
+	    ncurses:bkgd ncurses:bkgdset
+
+	    ncurses:chgat ncurses:clear ncurses:color_set
+	    ncurses:clrtobot ncurses:clrtoeol
+
+	    ncurses:delch ncurses:deleteln
+
+	    ncurses:echochar ncurses:erase
+
+	    ncurses:getch ncurses:getstr
+
+	    ncurses:inch ncurses:inchnstr ncurses:inchstr
+	    ncurses:innstr ncurses:insch ncurses:insdelln
+	    ncurses:insertln ncurses:insnstr ncurses:insstr ncurses:instr
+
+	    ncurses:move
+
+	    ncurses:refresh
+
+	    ncurses:scrl ncurses:setscrreg ncurses:standout ncurses:standend
+
+	    ncurses:timeout
+
+	    ncurses:wdeleteln ncurses:winsertln
+
+	    ncurses:getyx ncurses:getbegyx ncurses:getmaxyx ncurses:getparyx
+
 	    *ncurses:A_NORMAL*
 	    *ncurses:A_ATTRIBUTES*
 	    *ncurses:A_CHARTEXT*
@@ -187,7 +205,6 @@
 	    *ncurses:A_VERTICAL*
 	    *ncurses:A_ITALIC*
 
-	    ;; colors
 	    *ncurses:COLOR_BLACK*
 	    *ncurses:COLOR_RED*
 	    *ncurses:COLOR_GREEN*
@@ -196,9 +213,9 @@
 	    *ncurses:COLOR_MAGENTA*
 	    *ncurses:COLOR_CYAN*
 	    *ncurses:COLOR_WHITE*
-	    
-	    ;; keys
+
 	    ncurses:KEY_F
+
 	    *ncurses:KEY_CODE_YES*
 	    *ncurses:KEY_MIN*
 	    *ncurses:KEY_BREAK*
@@ -292,6 +309,12 @@
 	    *ncurses:KEY_UNDO*
 	    *ncurses:KEY_MOUSE*
 	    *ncurses:KEY_RESIZE*
-	    *ncurses:KEY_MAX*)
-    (import (only (ncurses runtime) init-ncurses-binding)
-	    (ncurses curses)))
+	    *ncurses:KEY_MAX*
+
+	    )
+    (import (ncurses curses functions)
+	    (ncurses curses variables)
+	    (ncurses curses psuedo-functions)
+	    (ncurses curses constants))
+
+)
