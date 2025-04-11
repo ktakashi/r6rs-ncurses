@@ -29,11 +29,16 @@
 
 #!r6rs
 (library (ncurses curses)
-    (export ncurses:baudrate ncurses:beep 
+    (export bool char* short* int* void* va_list
+	    chtype chtype*
+	    mmask_t mmask_t* attr_t attr_t*
+	    WINDOW* SCREEN* FILE*
+
+	    ncurses:baudrate ncurses:beep
 	    ncurses:border ncurses:box
 
 	    ncurses:can_change_color ncurses:cbreak
-	    ncurses:clearok ncurses:color_content 
+	    ncurses:clearok ncurses:color_content
 	    ncurses:COLOR_PAIR ncurses:copywin
 	    ncurses:curs_set
 
@@ -51,8 +56,8 @@
 	    ncurses:hline
 
 	    ncurses:idcok ncurses:idlok ncurses:immedok ncurses:initscr
-	    ncurses:init_color ncurses:init_pair 
-	    
+	    ncurses:init_color ncurses:init_pair
+
 	    ncurses:intrflush ncurses:isendwin
 	    ncurses:is_linetouched ncurses:is_wintouched
 
@@ -90,7 +95,7 @@
 
 	    ncurses:qiflush
 
-	    ncurses:raw ncurses:redrawwin 
+	    ncurses:raw ncurses:redrawwin
 	    ncurses:resetty ncurses:reset_prog_mode
 	    ncurses:reset_shell_mode ncurses:ripoffline
 
@@ -106,7 +111,7 @@
 	    ncurses:slk_touch
 	    ncurses:start_color ncurses:subpad ncurses:subwin ncurses:syncok
 
-	    ncurses:termattrs ncurses:termname 
+	    ncurses:termattrs ncurses:termname
 	    ncurses:touchline ncurses:touchwin ncurses:typeahead
 
 	    ncurses:ungetch ncurses:untouchwin ncurses:use_env
@@ -124,7 +129,7 @@
 	    ncurses:wchgat ncurses:wclear
 	    ncurses:wclrtobot ncurses:wclrtoeol
 	    ncurses:wcolor_set ncurses:wcursyncup
-	    ncurses:wdelch 
+	    ncurses:wdelch
 	    ncurses:wechochar ncurses:werase
 	    ncurses:wgetch ncurses:wgetnstr ncurses:wgetstr ncurses:whline
 	    ncurses:winch ncurses:winchnstr ncurses:winchstr
@@ -146,7 +151,7 @@
 	    ncurses:getbegx ncurses:getbegy ncurses:getmaxx
 	    ncurses:getmaxy ncurses:getparx ncurses:getpary
 
-	    
+
 	    *ncurses:curscr* *ncurses:newscr* *ncurses:stdscr* *ncurses:ttytype*
 	    *ncurses:COLORS* *ncurses:COLOR_PAIRS* *ncurses:COLS*
 	    *ncurses:ESCDELAY* *ncurses:LINES* *ncurses:TABSIZE*
@@ -188,7 +193,51 @@
 	    *ncurses:A_CHARTEXT*
 	    *ncurses:A_COLOR*
 
-	    *ncurses:OK* 
+	    ncurses:ACS_ULCORNER
+	    ncurses:ACS_LLCORNER
+	    ncurses:ACS_URCORNER
+	    ncurses:ACS_LRCORNER
+	    ncurses:ACS_LTEE
+	    ncurses:ACS_RTEE
+	    ncurses:ACS_BTEE
+	    ncurses:ACS_TTEE
+	    ncurses:ACS_HLINE
+	    ncurses:ACS_VLINE
+	    ncurses:ACS_PLUS
+	    ncurses:ACS_S1
+	    ncurses:ACS_S9
+	    ncurses:ACS_DIAMOND
+	    ncurses:ACS_CKBOARD
+	    ncurses:ACS_DEGREE
+	    ncurses:ACS_PLMINUS
+	    ncurses:ACS_BULLET
+	    ncurses:ACS_LARROW
+	    ncurses:ACS_RARROW
+	    ncurses:ACS_DARROW
+	    ncurses:ACS_UARROW
+	    ncurses:ACS_BOARD
+	    ncurses:ACS_LANTERN
+	    ncurses:ACS_BLOCK
+	    ncurses:ACS_S3
+	    ncurses:ACS_S7
+	    ncurses:ACS_LEQUAL
+	    ncurses:ACS_GEQUAL
+	    ncurses:ACS_PI
+	    ncurses:ACS_NEQUAL
+	    ncurses:ACS_STERLING
+	    ncurses:ACS_BSSB
+	    ncurses:ACS_SSBB
+	    ncurses:ACS_BBSS
+	    ncurses:ACS_SBBS
+	    ncurses:ACS_SBSS
+	    ncurses:ACS_SSSB
+	    ncurses:ACS_SSBS
+	    ncurses:ACS_BSSS
+	    ncurses:ACS_BSBS
+	    ncurses:ACS_SBSB
+	    ncurses:ACS_SSSS
+
+	    *ncurses:OK*
 	    *ncurses:ERR*
 
 	    *ncurses:A_STANDOUT*
@@ -311,10 +360,9 @@
 	    *ncurses:KEY_SUSPEND*
 	    *ncurses:KEY_UNDO*
 	    *ncurses:KEY_RESIZE*
-	    *ncurses:KEY_MAX*
-
-	    )
-    (import (ncurses curses functions)
+	    *ncurses:KEY_MAX*)
+    (import (ncurses curses types)
+	    (ncurses curses functions)
 	    (ncurses curses variables)
 	    (ncurses curses psuedo-functions)
 	    (ncurses curses constants))

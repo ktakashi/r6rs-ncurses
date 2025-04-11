@@ -46,7 +46,7 @@
 
 (ncurses:initscr)
 (ncurses:cbreak)
-(ncurses:keypad *ncurses:stdscr* 1)
+(ncurses:keypad *ncurses:stdscr* #t)
 
 (let* ((height 3) (width 10)
        (starty (div (- *ncurses:LINES* height) 2))

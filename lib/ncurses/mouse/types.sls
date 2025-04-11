@@ -42,7 +42,7 @@
 	    MEVENT-bstate-set!)
     (import (rnrs)
 	    (pffi)
-	    (ncurses types))
+	    (ncurses curses types))
 
 (define-foreign-struct MEVENT
   (fields (short id)

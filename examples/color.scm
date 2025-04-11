@@ -22,7 +22,7 @@
 	  "%s" string)))))
 
 (ncurses:initscr)
-(when (zero? (ncurses:has_colors))
+(unless (ncurses:has_colors)
   (ncurses:endwin)
   (display "Your terminal does not support color") (newline)
   (exit 1))

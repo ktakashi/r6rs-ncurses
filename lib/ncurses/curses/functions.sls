@@ -148,8 +148,8 @@
 	    ncurses:getmaxy ncurses:getparx ncurses:getpary)
     (import (rnrs)
 	    (pffi)
-	    (ncurses types)
-	    (ncurses runtime))
+	    (ncurses runtime)
+	    (ncurses curses types))
 
 (define-syntax define-binding
   (lambda (x)

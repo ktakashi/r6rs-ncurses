@@ -46,8 +46,8 @@
 	    )
     (import (rnrs)
 	    (pffi)
-	    (ncurses types)
 	    (ncurses runtime)
+	    (ncurses curses types)
 	    (ncurses curses variables) ;; for *ncurses:stdscr*
 	    (ncurses mouse types))
 (define-syntax define-binding

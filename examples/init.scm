@@ -8,7 +8,7 @@
 (ncurses:initscr)			; start curses mode
 (guard (e (else (display (condition-message e)) (newline)))
   (ncurses:raw)				; line buffering disabled
-  (ncurses:keypad *ncurses:stdscr* 1)	; We get F1, F2 etc
+  (ncurses:keypad *ncurses:stdscr* #t)	; We get F1, F2 etc
   (ncurses:noecho)			; Don't echo() while we do getch
   
   (ncurses:printw "Type any character to see it in bold\n")

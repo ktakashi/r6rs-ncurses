@@ -79,7 +79,7 @@
 (ncurses:initscr)
 (ncurses:start_color)
 (ncurses:cbreak)
-(ncurses:keypad *ncurses:stdscr* 1)
+(ncurses:keypad *ncurses:stdscr* #t)
 (ncurses:noecho)
 (ncurses:init_pair 1 *ncurses:COLOR_CYAN* *ncurses:COLOR_BLACK*)
 

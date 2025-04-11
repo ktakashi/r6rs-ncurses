@@ -1,6 +1,6 @@
 ;;; -*- mode:scheme; coding: utf-8; -*-
 ;;;
-;;; ncurses/types.sls
+;;; ncurses/curses/types.sls - Curses types
 ;;;
 ;;;   Copyright (c) 2025  Takashi Kato  <ktakashi@ymail.com>
 ;;;
@@ -28,15 +28,14 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #!r6rs
-(library (ncurses types)
+(library (ncurses curses types)
     (export bool char* short* int* void* va_list
 	    chtype chtype*
 	    mmask_t mmask_t* attr_t attr_t*
-	    WINDOW* SCREEN* FILE*
-	    )
+	    WINDOW* SCREEN* FILE*)
     (import (rnrs)
 	    (pffi))
-(define-type-alias bool unsigned-char)
+(define-type-alias bool boolean)
 (define-type-alias char* pointer)
 (define-type-alias short* pointer)
 (define-type-alias int* pointer)
@@ -45,13 +44,13 @@
 
 (define-type-alias chtype uint32_t)
 (define-type-alias chtype* pointer)
-(define-type-alias mmask_t uint32_t)
+(define-type-alias mmask_t unsigned-long)
 (define-type-alias mmask_t* pointer)
 (define-type-alias attr_t chtype)
 (define-type-alias attr_t* pointer)
 
 (define-type-alias WINDOW* pointer)
 (define-type-alias SCREEN* pointer)
-(define-type-alias FILE* pointer)
+(define-type-alias FILE* pointer) ;; this it not curses types, but needed :(
 
 )
