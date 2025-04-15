@@ -53,5 +53,5 @@
   (protocol (lambda (p)
 	      (lambda ()
 		(p 0 0 0 0 0)))))
-(define-type-alias MEVENT* pointer)
+(define-type-alias MEVENT* (* MEVENT))
 )
