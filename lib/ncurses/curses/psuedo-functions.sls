@@ -113,10 +113,8 @@
 (define (ncurses:getbegyx win)
   (values (ncurses:getbegy win) (ncurses:getbegx win)))
 (define (ncurses:getmaxyx win)
-  (values (ncurses:getmaxy *ncurses:stdscr*)
-	  (ncurses:getmaxx *ncurses:stdscr*)))
+  (values (ncurses:getmaxy win) (ncurses:getmaxx win)))
 (define (ncurses:getparyx win)
-  (values (ncurses:getpary *ncurses:stdscr*)
-	  (ncurses:getparx *ncurses:stdscr*)))
+  (values (ncurses:getpary win) (ncurses:getparx win)))
 
 )

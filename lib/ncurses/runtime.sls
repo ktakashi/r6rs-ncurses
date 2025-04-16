@@ -31,23 +31,26 @@
 (library (ncurses runtime)
     (export init-ncurses-binding
 	    ncurses-binding
+	    load-native-library
 	    (rename (*ncurses* *ncurses:native-library*)))
     (import (rnrs)
 	    (pffi)
 	    (psystem os))
 
-(define (load-ncurses-library)
-  (open-shared-object
-   (case *psystem:os-name*
-     ((Linux) "libncurses.so")
-     ((Darwin) "libncurses.dylib")
-     (else (error 'shared-library "Unknown platform" *psystem:os-name*)))))
+(define (load-native-library library)
+  (let-values (((prefix suffix)
+		(case *psystem:os-name*
+		    ((Linux) (values "lib" ".so"))
+		    ((Darwin) (values "lib" ".dylib"))
+		    (else (error 'shared-library "Unknown platform"
+				 *psystem:os-name*)))))
+    (open-shared-object (string-append prefix library suffix))))
 
-(define *ncurses* (load-ncurses-library))
+(define *ncurses* (load-native-library "ncurses"))
 (define (init-ncurses-binding) *ncurses*)
 
 (define-syntax ncurses-binding
-  (syntax-rules (x)
+  (syntax-rules ()
     ((k ret name (args ...))
      (foreign-procedure *ncurses* ret name (args ...)))))
 )

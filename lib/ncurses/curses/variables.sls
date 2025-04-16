@@ -113,7 +113,7 @@
 ;;; ACS variables
 ;; internal map
 ;;(define-binding pointer acs_map)
-(define-binding (array uint32) acs_map)
+(define-binding (array uint32_t) acs_map)
 (define-syntax ncurses-acs
   (syntax-rules ()
     ((_ c) (*ncurses:acs_map* (char->integer c)))))
