@@ -31,9 +31,9 @@
   (let-values (((starty startx) (ncurses:getbegyx win))
 	       ((height width) (ncurses:getmaxyx win)))
     (ncurses:box win 0 0)
-    (ncurses:mvwaddch win 2 0 (ncurses:ACS_LTEE))
-    (ncurses:mvwhline win 2 1 (ncurses:ACS_HLINE) (- width 2))
-    (ncurses:mvwaddch win 2 (- width 1) (ncurses:ACS_RTEE))
+    (ncurses:mvwaddch win 2 0 *ncurses:ACS_LTEE*)
+    (ncurses:mvwhline win 2 1 *ncurses:ACS_HLINE* (- width 2))
+    (ncurses:mvwaddch win 2 (- width 1) *ncurses:ACS_RTEE*)
     (print-in-middle win 1 0 width label (ncurses:COLOR_PAIR color))))
 
 (define (init-wins n)

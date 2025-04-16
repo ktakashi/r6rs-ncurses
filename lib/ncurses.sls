@@ -158,63 +158,63 @@
 	    ncurses:getmaxy ncurses:getparx ncurses:getpary
 
 	    ncurses:getyx ncurses:getbegyx ncurses:getmaxyx ncurses:getparyx
-	    
+
 	    ;; variables
 	    *ncurses:curscr* *ncurses:newscr* *ncurses:stdscr* *ncurses:ttytype*
 	    *ncurses:COLORS* *ncurses:COLOR_PAIRS* *ncurses:COLS*
 	    *ncurses:ESCDELAY* *ncurses:LINES* *ncurses:TABSIZE*
-	    
+
 	    ;; attributes
 	    *ncurses:A_NORMAL*
 	    *ncurses:A_ATTRIBUTES*
 	    *ncurses:A_CHARTEXT*
 	    *ncurses:A_COLOR*
 
-	    ncurses:ACS_ULCORNER
-	    ncurses:ACS_LLCORNER
-	    ncurses:ACS_URCORNER
-	    ncurses:ACS_LRCORNER
-	    ncurses:ACS_LTEE
-	    ncurses:ACS_RTEE
-	    ncurses:ACS_BTEE
-	    ncurses:ACS_TTEE
-	    ncurses:ACS_HLINE
-	    ncurses:ACS_VLINE
-	    ncurses:ACS_PLUS
-	    ncurses:ACS_S1
-	    ncurses:ACS_S9
-	    ncurses:ACS_DIAMOND
-	    ncurses:ACS_CKBOARD
-	    ncurses:ACS_DEGREE
-	    ncurses:ACS_PLMINUS
-	    ncurses:ACS_BULLET
-	    ncurses:ACS_LARROW
-	    ncurses:ACS_RARROW
-	    ncurses:ACS_DARROW
-	    ncurses:ACS_UARROW
-	    ncurses:ACS_BOARD
-	    ncurses:ACS_LANTERN
-	    ncurses:ACS_BLOCK
-	    ncurses:ACS_S3
-	    ncurses:ACS_S7
-	    ncurses:ACS_LEQUAL
-	    ncurses:ACS_GEQUAL
-	    ncurses:ACS_PI
-	    ncurses:ACS_NEQUAL
-	    ncurses:ACS_STERLING
-	    ncurses:ACS_BSSB
-	    ncurses:ACS_SSBB
-	    ncurses:ACS_BBSS
-	    ncurses:ACS_SBBS
-	    ncurses:ACS_SBSS
-	    ncurses:ACS_SSSB
-	    ncurses:ACS_SSBS
-	    ncurses:ACS_BSSS
-	    ncurses:ACS_BSBS
-	    ncurses:ACS_SBSB
-	    ncurses:ACS_SSSS
-	    
-	    *ncurses:OK* 
+	    *ncurses:ACS_ULCORNER*
+	    *ncurses:ACS_LLCORNER*
+	    *ncurses:ACS_URCORNER*
+	    *ncurses:ACS_LRCORNER*
+	    *ncurses:ACS_LTEE*
+	    *ncurses:ACS_RTEE*
+	    *ncurses:ACS_BTEE*
+	    *ncurses:ACS_TTEE*
+	    *ncurses:ACS_HLINE*
+	    *ncurses:ACS_VLINE*
+	    *ncurses:ACS_PLUS*
+	    *ncurses:ACS_S1*
+	    *ncurses:ACS_S9*
+	    *ncurses:ACS_DIAMOND*
+	    *ncurses:ACS_CKBOARD*
+	    *ncurses:ACS_DEGREE*
+	    *ncurses:ACS_PLMINUS*
+	    *ncurses:ACS_BULLET*
+	    *ncurses:ACS_LARROW*
+	    *ncurses:ACS_RARROW*
+	    *ncurses:ACS_DARROW*
+	    *ncurses:ACS_UARROW*
+	    *ncurses:ACS_BOARD*
+	    *ncurses:ACS_LANTERN*
+	    *ncurses:ACS_BLOCK*
+	    *ncurses:ACS_S3*
+	    *ncurses:ACS_S7*
+	    *ncurses:ACS_LEQUAL*
+	    *ncurses:ACS_GEQUAL*
+	    *ncurses:ACS_PI*
+	    *ncurses:ACS_NEQUAL*
+	    *ncurses:ACS_STERLING*
+	    *ncurses:ACS_BSSB*
+	    *ncurses:ACS_SSBB*
+	    *ncurses:ACS_BBSS*
+	    *ncurses:ACS_SBBS*
+	    *ncurses:ACS_SBSS*
+	    *ncurses:ACS_SSSB*
+	    *ncurses:ACS_SSBS*
+	    *ncurses:ACS_BSSS*
+	    *ncurses:ACS_BSBS*
+	    *ncurses:ACS_SBSB*
+	    *ncurses:ACS_SSSS*
+
+	    *ncurses:OK*
 	    *ncurses:ERR*
 
 	    *ncurses:A_STANDOUT*
@@ -243,7 +243,7 @@
 	    *ncurses:COLOR_MAGENTA*
 	    *ncurses:COLOR_CYAN*
 	    *ncurses:COLOR_WHITE*
-	    
+
 	    ;; keys
 	    ncurses:KEY_F
 	    *ncurses:KEY_CODE_YES*
