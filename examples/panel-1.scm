@@ -8,7 +8,7 @@
 (init-panels-binding)
 
 ;; From
-;; https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/panelss.html
+;; https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/panels.html
 ;; Example 14
 
 (define lines 10)
