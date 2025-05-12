@@ -19,8 +19,10 @@
   (let ((my-form (forms:new_form fields)))
     (forms:post_form my-form)
     (ncurses:refresh)
+
     (ncurses:mvprintw 4 10 "Value 1:")
     (ncurses:mvprintw 6 10 "Value 2:")
+    (ncurses:refresh)
     (do ((ch (ncurses:getch) (ncurses:getch)))
 	((eqv? ch (ncurses:KEY_F 1)))
       (cond ((eqv? ch *ncurses:KEY_DOWN*)
@@ -34,6 +36,3 @@
     (forms:free_form my-form)
     (vector-for-each forms:free_field fields)))
 (ncurses:endwin)
-
-
-  

@@ -29,7 +29,7 @@
 
 #!r6rs
 (library (ncurses curses)
-    (export bool char* short* int* void* va_list
+    (export bool char* short* int* void* va_list va_list*
 	    chtype chtype*
 	    mmask_t mmask_t* attr_t attr_t*
 	    WINDOW* SCREEN* FILE*
