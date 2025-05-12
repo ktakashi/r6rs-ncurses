@@ -280,37 +280,15 @@
 
 (define-binding (void) menu_format(MENU* int* int*))
 
-(define (check-pointer-array who vec)
-  (unless (vector? vec) (assertion-violation who "Items must be a vector" vec))
-  (do ((i 0 (+ i 1)) (len (vector-length vec)))
-      ((= i len))
-    (unless (pointer? (vector-ref vec i))
-      (assertion-violation who "Vector of pointer is required" vec))))
-
-(define (items->pointer items)
-  (define len (vector-length items))
-  (let* ((buf (make-bytevector (* size-of-pointer (+ len 1)) 0))
-	 (pp (bytevector->pointer buf)))
-    (do ((i 0 (+ i 1)))
-	((= i len) pp)
-      (pointer-set-c-pointer! pp (* i size-of-pointer) (vector-ref items i)))))
-
 (define (%menus:new_menu items)
   (check-pointer-array 'menus:new_menu items)
-  (let ((pp (items->pointer items)))
-    (menus:new_menu pp)))
+  (menus:new_menu (vector->pointer-array items)))
 
 (define (%menus:menu_items menu)
-  (let ((pp (menus:menu_items menu)))
-    (let loop ((r '()) (i 0))
-      (let ((p (pointer-ref-c-pointer pp (* i size-of-pointer))))
-	(if (null-pointer? p)
-	    (list->vector (reverse r))
-	    (loop (cons p r) (+ i 1)))))))
+  (pointer-array->vector (menus:menu_items menu) null-pointer?))
 
 (define (%menus:set_menu_items menu items)
   (check-pointer-array 'menus:set_menu_items items)
-  (let ((pp (items->pointer items)))
-    (menus:new_menu pp)))
+  (menus:set_menu_items menu (vector->pointer-array items)))
   
 )

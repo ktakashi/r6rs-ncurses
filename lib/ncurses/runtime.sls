@@ -32,7 +32,12 @@
     (export init-ncurses-binding
 	    ncurses-binding
 	    load-native-library
-	    (rename (*ncurses* *ncurses:native-library*)))
+	    (rename (*ncurses* *ncurses:native-library*))
+
+	    check-pointer-array
+	    vector->pointer-array
+	    pointer-array->vector
+	    )
     (import (rnrs)
 	    (pffi)
 	    (psystem os))
@@ -53,4 +58,27 @@
   (syntax-rules ()
     ((k ret name (args ...))
      (foreign-procedure *ncurses* ret name (args ...)))))
+
+(define (check-pointer-array who vec)
+  (unless (vector? vec) (assertion-violation who "Items must be a vector" vec))
+  (do ((i 0 (+ i 1)) (len (vector-length vec)))
+      ((= i len))
+    (unless (pointer? (vector-ref vec i))
+      (assertion-violation who "Vector of pointer is required" vec))))
+
+(define (vector->pointer-array items)
+  (define len (vector-length items))
+  (let* ((buf (make-bytevector (* size-of-pointer (+ len 1)) 0))
+	 (pp (bytevector->pointer buf)))
+    (do ((i 0 (+ i 1)))
+	((= i len) pp)
+      (pointer-set-c-pointer! pp (* i size-of-pointer) (vector-ref items i)))))
+
+(define (pointer-array->vector pp term-pred)
+  (let loop ((r '()) (i 0))
+    (let ((p (pointer-ref-c-pointer pp (* i size-of-pointer))))
+      (if (term-pred p)
+	  (list->vector (reverse r))
+	  (loop (cons p r) (+ i 1))))))
+  
 )
