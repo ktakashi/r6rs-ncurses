@@ -66,3 +66,9 @@ This library provides the binding of `libpanel`.
 ### `(ncurses forms)`
 
 This library provides the binding of `libform`.
+
+Examples
+--------
+
+Example scripts are located in [examples](./examples) directory. All the
+examples are based on the [NCURSES Programming HOWTO](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/index.html).
