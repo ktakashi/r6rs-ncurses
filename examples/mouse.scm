@@ -41,7 +41,6 @@
       (inc! y))
     (ncurses:wrefresh menu-win)))
 	  
-;; (display "\x1b;[?1003h")
 (ncurses:initscr)
 (ncurses:clear)
 (ncurses:noecho)
@@ -69,8 +68,10 @@
   (ncurses:attroff *ncurses:A_REVERSE*)
   
   (print-menu menu-win 1)
-  (ncurses:mousemask *ncurses:ALL_MOUSE_EVENTS* (integer->pointer 0))
-  
+  (ncurses:mousemask (bitwise-ior *ncurses:ALL_MOUSE_EVENTS*
+				  *ncurses:REPORT_MOUSE_POSITION*)
+		     (integer->pointer 0))
+  (display "\x1b;[?1003h\n")
   (do ((end? #f) (event (ncurses:make-MEVENT)) (choice 0))
       (end?)
     (let ((c (ncurses:wgetch menu-win)))
@@ -81,13 +82,14 @@
 		    (set! choice (report-choise (+ (ncurses:MEVENT-x event) 1)
 						(+ (ncurses:MEVENT-y event) 1)))
 		    (if (= choice -1)
-			(set! end #t)
+			(set! end #f)
 			(begin
 			  (ncurses:mvprintw 22 1 "Choice made is : %d String Chosen is \"%10s\"" choice (vector-ref choices (- choice 1)))
 			  (ncurses:refresh)))))
 	     (unless end? (print-menu menu-win choice)))
 	    ;; ESC or ALT
 	    ((eqv? c 27) (set! end? #t))))))
+(display "\x1b;[?1003l\n")
 (ncurses:getch)
 (ncurses:endwin)
 
