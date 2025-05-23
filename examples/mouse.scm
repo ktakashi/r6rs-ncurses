@@ -45,52 +45,55 @@
 (ncurses:clear)
 (ncurses:noecho)
 (ncurses:cbreak)
+(ncurses:mousemask (bitwise-ior *ncurses:ALL_MOUSE_EVENTS*
+				*ncurses:REPORT_MOUSE_POSITION*)
+		   (integer->pointer 0))
+(display "\x1b;[?1003h\n")
+
 (let* ((startx (div (- 80 width) 2))
        (starty (div (- 24 height) 2))
        (menu-win (ncurses:newwin height width starty startx)))
   (define (report-choise mousex mousey)
     (define i (+ startx 2))
     (define j (+ starty 3))
-    (let loop ( (choice 0))
+    (let loop ((choice 0))
       (cond ((= (vector-length choices) choice) -1)
 	    ((and (= (+ j choice) mousey)
 		  (>= mousex i)
-		  (<= mounex (+ i (string-length (vector-ref choices i)))))
+		  (<= mousex (+ i (string-length (vector-ref choices choice)))))
 	     (if (= choice (- (vector-length choices) 1))
 		 -1
 		 (+ choice 1)))
 	    (else (loop (+ choice 1))))))
 
   (ncurses:attron *ncurses:A_REVERSE*)
-  ;; if has mounse == 1, then it works...
   (ncurses:mvprintw 23 1 "Click on Exit to quit (Works best in a virtual console)")
   (ncurses:refresh)
   (ncurses:attroff *ncurses:A_REVERSE*)
   
-  (print-menu menu-win 1)
-  (ncurses:mousemask (bitwise-ior *ncurses:ALL_MOUSE_EVENTS*
-				  *ncurses:REPORT_MOUSE_POSITION*)
-		     (integer->pointer 0))
-  (display "\x1b;[?1003h\n")
-  (do ((end? #f) (event (ncurses:make-MEVENT)) (choice 0))
+  (print-menu menu-win 0)
+  (ncurses:keypad menu-win #t) ;; this is needed to capture mouse event...
+
+  (do ((end? #f)
+       (event (ncurses:make-MEVENT))
+       (choice 0))
       (end?)
     (let ((c (ncurses:wgetch menu-win)))
       (cond ((eqv? c *ncurses:KEY_MOUSE*)
-	     (cond ((and (= (ncurses:getmouse event) *ncurses:OK*)
-			 (not (zero? (bitwise-and (ncurses:MEVENT-bstate event)
-						  *ncurses:BUTTON1_PRESSED*))))
-		    (set! choice (report-choise (+ (ncurses:MEVENT-x event) 1)
-						(+ (ncurses:MEVENT-y event) 1)))
-		    (if (= choice -1)
-			(set! end #f)
-			(begin
-			  (ncurses:mvprintw 22 1 "Choice made is : %d String Chosen is \"%10s\"" choice (vector-ref choices (- choice 1)))
-			  (ncurses:refresh)))))
+	     (when (and (= (ncurses:getmouse event) *ncurses:OK*)
+			(not (zero? (bitwise-and (ncurses:MEVENT-bstate event)
+						 *ncurses:BUTTON1_CLICKED*))))
+	       (set! choice (report-choise (+ (ncurses:MEVENT-x event) 1)
+					   (+ (ncurses:MEVENT-y event) 1)))
+	       (if (= choice -1)
+		   (set! end? #t)
+		   (begin
+		     (ncurses:mvprintw 22 1 "Choice made is : %d String Chosen is \"%10s\"" choice (vector-ref choices (- choice 1)))
+		     (ncurses:refresh))))
 	     (unless end? (print-menu menu-win choice)))
 	    ;; ESC or ALT
 	    ((eqv? c 27) (set! end? #t))))))
 (display "\x1b;[?1003l\n")
-(ncurses:getch)
 (ncurses:endwin)
 
 
